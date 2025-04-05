@@ -1,133 +1,154 @@
-import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
-    <footer className="bg-georgian-dark text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-4">Discover Georgia</h4>
-            <p className="text-gray-300 mb-4">
-              Your guide to experiencing the heart of the Caucasus region with its rich history, 
-              diverse landscapes, and legendary hospitality.
-            </p>
-            <div className="flex space-x-4">
-              <a 
-                href="#" 
-                className="text-white hover:text-accent transition duration-150"
-                aria-label="Facebook"
-              >
-                <span className="material-icons">facebook</span>
-              </a>
-              <a 
-                href="#" 
-                className="text-white hover:text-accent transition duration-150"
-                aria-label="Instagram"
-              >
-                <span className="material-icons">camera_alt</span>
-              </a>
-              <a 
-                href="#" 
-                className="text-white hover:text-accent transition duration-150"
-                aria-label="Email"
-              >
-                <span className="material-icons">alternate_email</span>
-              </a>
+    <footer className="bg-gray-900 text-white pt-16 pb-8">
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          {/* Logo and info section */}
+          <div className="flex flex-col md:flex-row gap-12 mb-16">
+            {/* Brand section */}
+            <div className="md:w-2/5">
+              <div className="flex items-center mb-6">
+                <div className="h-10 w-10 bg-primary/80 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  <span className="font-georgian text-lg">გე</span>
+                </div>
+                <h2 className="text-white font-serif text-2xl">xplore<span className="text-primary">.</span></h2>
+              </div>
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                {t("footer.about")}
+              </p>
+              
+              {/* Social media icons */}
+              <div className="flex space-x-4">
+                <button 
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary/80 flex items-center justify-center transition-colors duration-300"
+                  aria-label="Facebook"
+                >
+                  <span className="material-icons text-lg">facebook</span>
+                </button>
+                <button 
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary/80 flex items-center justify-center transition-colors duration-300"
+                  aria-label="Instagram"
+                >
+                  <span className="material-icons text-lg">camera_alt</span>
+                </button>
+                <button 
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary/80 flex items-center justify-center transition-colors duration-300"
+                  aria-label="Email"
+                >
+                  <span className="material-icons text-lg">alternate_email</span>
+                </button>
+              </div>
             </div>
-          </div>
-          
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-4">Explore</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/about">
-                  <a className="text-gray-300 hover:text-white transition duration-150">
-                    About the Country
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery">
-                  <a className="text-gray-300 hover:text-white transition duration-150">
-                    Gallery
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/resorts">
-                  <a className="text-gray-300 hover:text-white transition duration-150">
-                    Resorts
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/cuisine">
-                  <a className="text-gray-300 hover:text-white transition duration-150">
-                    Cuisine
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/traditions">
-                  <a className="text-gray-300 hover:text-white transition duration-150">
-                    Traditions
-                  </a>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-4">Resources</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition duration-150">
-                  Travel Tips
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition duration-150">
-                  Visa Information
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition duration-150">
-                  Transportation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition duration-150">
-                  Accommodation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition duration-150">
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-4">Contact</h4>
-            <address className="not-italic text-gray-300">
-              <p className="mb-2">Tourism Information Center</p>
-              <p className="mb-2">Freedom Square, Tbilisi</p>
-              <p className="mb-2">Georgia</p>
-            </address>
-            <p className="text-gray-300 mt-4">
-              <span className="material-icons text-sm align-middle mr-1">email</span> 
-              info@discovergeorgia.ge
-            </p>
+            
+            {/* Links grid */}
+            <div className="md:w-3/5 grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {/* Explore Links */}
+              <div>
+                <h4 className="font-semibold text-lg mb-5 text-white">{t("footer.explore")}</h4>
+                <ul className="space-y-3">
+                  <li>
+                    <button 
+                      onClick={() => window.location.href = "/about"}
+                      className="text-gray-400 hover:text-white transition duration-200 block"
+                    >
+                      {t("nav.about")}
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => window.location.href = "/gallery"}
+                      className="text-gray-400 hover:text-white transition duration-200 block"
+                    >
+                      {t("nav.gallery")}
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => window.location.href = "/resorts"}
+                      className="text-gray-400 hover:text-white transition duration-200 block"
+                    >
+                      {t("nav.resorts")}
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => window.location.href = "/cuisine"}
+                      className="text-gray-400 hover:text-white transition duration-200 block"
+                    >
+                      {t("nav.cuisine")}
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => window.location.href = "/traditions"}
+                      className="text-gray-400 hover:text-white transition duration-200 block"
+                    >
+                      {t("nav.traditions")}
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Resources Links */}
+              <div>
+                <h4 className="font-semibold text-lg mb-5 text-white">{t("footer.resources")}</h4>
+                <ul className="space-y-3">
+                  <li>
+                    <button className="text-gray-400 hover:text-white transition duration-200 block">
+                      Travel Tips
+                    </button>
+                  </li>
+                  <li>
+                    <button className="text-gray-400 hover:text-white transition duration-200 block">
+                      Visa Information
+                    </button>
+                  </li>
+                  <li>
+                    <button className="text-gray-400 hover:text-white transition duration-200 block">
+                      Transportation
+                    </button>
+                  </li>
+                  <li>
+                    <button className="text-gray-400 hover:text-white transition duration-200 block">
+                      Accommodation
+                    </button>
+                  </li>
+                  <li>
+                    <button className="text-gray-400 hover:text-white transition duration-200 block">
+                      FAQ
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Contact */}
+              <div>
+                <h4 className="font-semibold text-lg mb-5 text-white">{t("footer.contact")}</h4>
+                <address className="not-italic text-gray-400 space-y-3">
+                  <p>Tourism Information Center</p>
+                  <p>Freedom Square, Tbilisi</p>
+                  <p>Georgia</p>
+                  <p className="flex items-center gap-2 mt-4">
+                    <span className="material-icons text-sm">email</span> 
+                    <span>info@xplore.ge</span>
+                  </p>
+                </address>
+              </div>
+            </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} Discover Georgia. All rights reserved.</p>
-          <p className="mt-2">
-            <a href="#" className="hover:text-white transition duration-150">Privacy Policy</a> | 
-            <a href="#" className="hover:text-white transition duration-150">Terms of Service</a>
-          </p>
+        {/* Copyright section */}
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+          <p>&copy; {new Date().getFullYear()} xplore. {t("footer.copyright")}</p>
+          <div className="mt-4 flex justify-center space-x-6">
+            <button className="hover:text-white transition duration-200">Privacy Policy</button>
+            <button className="hover:text-white transition duration-200">Terms of Service</button>
+          </div>
         </div>
       </div>
     </footer>
