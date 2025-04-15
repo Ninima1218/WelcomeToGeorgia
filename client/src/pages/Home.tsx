@@ -4,40 +4,17 @@ import GeorgianAlphabet from "@/components/GeorgianAlphabet";
 import SectionPreview from "@/components/SectionPreview";
 import HeroSection from "@/components/HeroSection";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getPhotosByCategory } from "@/lib/unsplashService";
-import { useEffect, useState } from "react";
 
 const Home = () => {
   const { t } = useLanguage();
-  const [sectionImages, setSectionImages] = useState<Record<string, string>>({});
-
-  // Fetch images for section previews
-  useEffect(() => {
-    const fetchSectionImages = async () => {
-      try {
-        // Fetch an image for each section
-        const categories = ['GEORGIA', 'MOUNTAINS', 'TBILISI', 'FOOD', 'CULTURE'];
-        const imagePromises = categories.map(cat => 
-          getPhotosByCategory(cat as any, 1, 1)
-        );
-        
-        const results = await Promise.all(imagePromises);
-        
-        const images: Record<string, string> = {};
-        ['about', 'gallery', 'resorts', 'cuisine', 'traditions'].forEach((section, index) => {
-          if (results[index].photos.length > 0) {
-            images[section] = results[index].photos[0].urls.regular;
-          }
-        });
-        
-        setSectionImages(images);
-      } catch (error) {
-        console.error('Error fetching section images:', error);
-      }
-    };
-
-    fetchSectionImages();
-  }, []);
+  // Preset images for sections (no API dependency)
+  const sectionImages = {
+    about: 'https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80', // Georgia architecture
+    gallery: 'https://images.unsplash.com/photo-1565782247805-d0c5155db3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80', // Mountains 
+    resorts: 'https://images.unsplash.com/photo-1563198963-6c902a1b8f2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80', // Batumi
+    cuisine: 'https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80', // Georgian food
+    traditions: 'https://images.unsplash.com/photo-1580366752989-242883389186?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80', // Culture/traditions
+  };
 
   // Section preview data
   const sections = [
