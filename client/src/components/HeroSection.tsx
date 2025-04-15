@@ -3,9 +3,12 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import WeatherWidget from "@/components/WeatherWidget";
 import { getPhotosByCategory } from "@/lib/unsplashService";
 
+// Default beautiful image of Georgia
+const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1565008576549-57cf17a24a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080';
+
 const HeroSection = () => {
   const { t } = useLanguage();
-  const [backgroundImage, setBackgroundImage] = useState<string>('');
+  const [backgroundImage, setBackgroundImage] = useState<string>(DEFAULT_IMAGE);
   const [photographer, setPhotographer] = useState<{ name: string; link: string } | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -26,11 +29,14 @@ const HeroSection = () => {
             name: photo.user.name,
             link: photo.user.links.html
           });
+        } else {
+          // If no photos were returned, use default
+          setBackgroundImage(DEFAULT_IMAGE);
         }
       } catch (error) {
         console.error('Error fetching hero image:', error);
         // Fallback to a default image if Unsplash API fails
-        setBackgroundImage('https://images.unsplash.com/photo-1565008576549-57cf17a24a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');
+        setBackgroundImage(DEFAULT_IMAGE);
       } finally {
         setLoading(false);
       }

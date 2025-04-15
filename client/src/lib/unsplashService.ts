@@ -2,7 +2,7 @@ import { createApi } from 'unsplash-js';
 
 // Initialize the Unsplash API client with the access key
 const unsplashApi = createApi({
-  accessKey: import.meta.env.UNSPLASH_ACCESS_KEY,
+  accessKey: import.meta.env.UNSPLASH_ACCESS_KEY || 'fallback-key',
 });
 
 // Categories of photos to search for
