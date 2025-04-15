@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Logo from "@/components/Logo";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,22 +19,36 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // Georgian translations for header items
+  const georgianWords = {
+    hello: "გამარჯობა",
+    welcome: "კეთილი იყოს თქვენი მობრძანება",
+  };
+
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+      <div className="container mx-auto px-4 py-2 flex flex-wrap items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/">
             <div className="flex items-center cursor-pointer">
-              <div className="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-2">
-                <span className="font-georgian text-xl">გე</span>
+              <Logo size="sm" className="mr-3" />
+              <div>
+                <h1 className="text-primary font-serif font-bold text-xl">
+                  <span className="hidden sm:inline">Discover</span> საქართველო
+                </h1>
+                <p className="text-xs text-gray-500 italic hidden md:block">See More, Feel More</p>
               </div>
-              <h1 className="text-primary font-montserrat font-bold text-2xl">Discover Georgia</h1>
             </div>
           </Link>
         </div>
 
         <div className="flex items-center md:order-3">
+          {/* Georgian greeting */}
+          <div className="hidden md:block mr-4">
+            <span className="font-georgian text-sm text-gray-600">{georgianWords.hello}!</span>
+          </div>
+          
           {/* Language Switcher */}
           <div className="mr-4">
             <LanguageSwitcher />
@@ -53,7 +68,7 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className={`${mobileMenuOpen ? 'block' : 'hidden'} md:flex md:items-center w-full md:w-auto md:order-2`}>
-          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-montserrat font-medium">
+          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-medium">
             <li className="py-2 md:py-0">
               <Link href="/about">
                 <span className={`block transition duration-150 cursor-pointer ${location === '/about' ? 'text-primary' : 'text-georgian-dark hover:text-primary'}`}>
@@ -86,6 +101,13 @@ const Header = () => {
               <Link href="/traditions">
                 <span className={`block transition duration-150 cursor-pointer ${location === '/traditions' ? 'text-primary' : 'text-georgian-dark hover:text-primary'}`}>
                   {t("nav.traditions")}
+                </span>
+              </Link>
+            </li>
+            <li className="py-2 md:py-0">
+              <Link href="/lessons">
+                <span className={`block transition duration-150 cursor-pointer ${location === '/lessons' ? 'text-primary' : 'text-georgian-dark hover:text-primary'}`}>
+                  <span className="font-georgian mr-1">ქართული</span> Lessons
                 </span>
               </Link>
             </li>

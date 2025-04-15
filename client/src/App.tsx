@@ -7,6 +7,7 @@ import Gallery from "@/pages/Gallery";
 import Resorts from "@/pages/Resorts";
 import Cuisine from "@/pages/Cuisine";
 import Traditions from "@/pages/Traditions";
+import Lessons from "@/pages/Lessons";
 import NotFound from "@/pages/not-found";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/resorts" component={Resorts} />
       <Route path="/cuisine" component={Cuisine} />
       <Route path="/traditions" component={Traditions} />
+      <Route path="/lessons" component={Lessons} />
       <Route component={NotFound} />
     </Switch>
   );
