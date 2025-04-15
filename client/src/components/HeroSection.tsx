@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from "@/contexts/LanguageContext";
 import WeatherWidget from "@/components/WeatherWidget";
 import { getPhotosByCategory } from "@/lib/unsplashService";
+import { Link } from 'wouter';
 
 // Default beautiful image of Georgia
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1565008576549-57cf17a24a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080';
@@ -73,19 +74,22 @@ const HeroSection = () => {
               <span className="text-primary">საქართველო</span>
             </h1>
             <h2 className="text-4xl md:text-5xl font-serif font-light mb-8">
-              Discover the Heart of Caucasus
+              {t("home.hero.title")}
             </h2>
             <p className="text-xl text-white/80 max-w-2xl mb-10">
-              Experience centuries of history, breathtaking landscapes,
-              and legendary hospitality in one of the world's oldest wine regions.
+              {t("home.hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg hover:bg-primary/90 transition-colors">
-                Plan Your Journey
-              </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium text-lg hover:bg-white/20 transition-colors">
-                Explore Georgia
-              </button>
+              <Link href="/about">
+                <a className="inline-block px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg hover:bg-primary/90 transition-colors cursor-pointer">
+                  {t("home.hero.button")}
+                </a>
+              </Link>
+              <Link href="/gallery">
+                <a className="inline-block px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium text-lg hover:bg-white/20 transition-colors cursor-pointer">
+                  {t("home.explore.button")}
+                </a>
+              </Link>
             </div>
           </div>
           
