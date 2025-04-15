@@ -19,7 +19,7 @@ const HeroSection = () => {
   const [backgroundImage] = useState<string>(GEORGIA_IMAGES[randomIndex]);
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-900 to-gray-700 h-screen min-h-[600px] flex items-center">
+    <section className="relative bg-gradient-to-b from-gray-900 to-gray-700 min-h-[650px] md:min-h-[700px] lg:min-h-[750px] xl:h-screen flex items-center py-20">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -29,26 +29,26 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10 text-white">
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-2/3 mb-10 md:mb-0">
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-4">
+        <div className="flex flex-col lg:flex-row">
+          <div className="lg:w-2/3 mb-10 lg:mb-0 md:pr-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4">
               <span className="text-primary">საქართველო</span>
             </h1>
-            <h2 className="text-4xl md:text-5xl font-serif font-light mb-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light mb-6 lg:mb-8">
               Discover Georgia
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mb-10">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-2xl mb-8 lg:mb-10">
               Experience centuries of history, breathtaking landscapes,
               and legendary hospitality in one of the world's oldest wine regions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/about">
-                <span className="inline-block px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg hover:bg-primary/90 transition-colors cursor-pointer">
+                <span className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white rounded-lg font-medium text-base sm:text-lg hover:bg-primary/90 transition-colors cursor-pointer">
                   Learn More
                 </span>
               </Link>
               <Link href="/gallery">
-                <span className="inline-block px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium text-lg hover:bg-white/20 transition-colors cursor-pointer">
+                <span className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium text-base sm:text-lg hover:bg-white/20 transition-colors cursor-pointer">
                   Explore Photos
                 </span>
               </Link>
@@ -56,8 +56,8 @@ const HeroSection = () => {
           </div>
           
           {/* Weather Widget */}
-          <div className="md:w-1/3">
-            <div className="bg-black/30 backdrop-blur-md p-6 rounded-xl border border-white/10">
+          <div className="w-full md:w-2/3 lg:w-1/3 mx-auto">
+            <div className="bg-black/30 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10">
               <WeatherWidget />
             </div>
           </div>
